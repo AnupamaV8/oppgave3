@@ -40,60 +40,80 @@ skip Otto!
 const cities = ["New York", "London", "Paris", "Berlin", "Copenhagen", "Rome"];
 
 const people = [
-	{
-		name: "Thomas",
-		male: true,
-		age: 23,
-		hobbies: ["cycling", "football", "pool"]
-	},
-	{
-		name: "Susan",
-		male: false,
-		age: 26,
-		hobbies: ["jogging", "travelling", "dancing"]
-	},
-	{
-		name: "Monica",
-		male: false,
-		age: 21,
-		hobbies: ["skateboarding", "guitar", "concerts"]
-	},
-	{
-		name: "Avery",
-		male: true,
-		age: 28,
-		hobbies: ["writing", "games", "memes"]
-	},
-	{
-		name: "Phillip",
-		male: true,
-		age: 24,
-		hobbies: ["boxing", "wrestling", "mma"]
-	},
-	{
-		name: "Otto",
-		male: true,
-		age: 36,
-		hobbies: ["movies", "cinema", "music"]
-	},
-	{
-		name: "Annabelle",
-		male: false,
-		age: 30,
-		hobbies: ["makeup", "fashion", "shopping"]
-	},
-	{
-		name: "Cathy",
-		male: false,
-		age: 18,
-		hobbies: ["design", "drawing", "css"]
-	}
+  {
+    name: "Thomas",
+    male: true,
+    age: 23,
+    hobbies: ["cycling", "football", "pool"],
+  },
+  {
+    name: "Susan",
+    male: false,
+    age: 26,
+    hobbies: ["jogging", "travelling", "dancing"],
+  },
+  {
+    name: "Monica",
+    male: false,
+    age: 21,
+    hobbies: ["skateboarding", "guitar", "concerts"],
+  },
+  {
+    name: "Avery",
+    male: true,
+    age: 28,
+    hobbies: ["writing", "games", "memes"],
+  },
+  {
+    name: "Phillip",
+    male: true,
+    age: 24,
+    hobbies: ["boxing", "wrestling", "mma"],
+  },
+  {
+    name: "Otto",
+    male: true,
+    age: 36,
+    hobbies: ["movies", "cinema", "music"],
+  },
+  {
+    name: "Annabelle",
+    male: false,
+    age: 30,
+    hobbies: ["makeup", "fashion", "shopping"],
+  },
+  {
+    name: "Cathy",
+    male: false,
+    age: 18,
+    hobbies: ["design", "drawing", "css"],
+  },
 ];
 let combinedAge = 0;
-
-//your code here
-
 let averageAge = 0;
+//your code here
+for (let i = 0; i < people.length; i++) {
+  if (people[i].name === "Otto") {
+    continue;
+  }
+
+  const randomCity = cities[Math.floor(Math.random() * cities.length)];
+  people[i].city = randomCity;
+
+  people[i].title = people[i].male ? "Mr." : "Ms.";
+
+  people[i].age += 2;
+
+  people[i].hobbies.unshift("coding");
+
+  combinedAge += people[i].age;
+  //console.log(people[i]);
+}
+
+averageAge = combinedAge / (people.length - 1);
+console.log(people);
+console.log("Combined Age:", combinedAge);
+console.log("Average Age:", averageAge);
 
 /******************************************************************************
 2.
@@ -116,8 +136,19 @@ Add a second parameter to the function that decides how many faces the dice
 should have.
 diceRoller(5, 20) should return an array of 5 random numbers ranging from 1-20 
 ******************************************************************************/
+// Function to roll a dice and return a random number between 1 and 6
+function diceRoller(number) {
+  //initializing empty array
+  const arr = [];
 
+  const numberValue = Math.floor(Math.random() * number) + 1;
 
+  for (let i = 0; i < number; i++) {
+    arr.push(numberValue);
+  }
+  return arr;
+}
+console.log(diceRoller(6));
 /******************************************************************************
 3.
 
@@ -126,7 +157,7 @@ Make the following function:
 The function should take in 1 array of strings.
 
 Inside the function, do this:
-
+f
 Write a loop that loops strings in the array, and does the following:
 - Removes whitespace from the beginning and end of each word
 - Converts all the words to lower case
@@ -141,8 +172,25 @@ Example:
 should return:
 "this text needs to be cleaned up"
 ******************************************************************************/
-
-
+function text(words) {
+  let clearArr = [];
+  for (x of words) {
+    let clearWord = x.trim().toLowerCase();
+    clearArr.push(clearWord);
+  }
+  return clearArr.join(" ");
+}
+const inputArray = [
+  " thIS",
+  "teXt  ",
+  " nEeds ",
+  "to",
+  "BE",
+  "cleANED   ",
+  " Up",
+];
+const result = text(inputArray);
+console.log(result);
 /******************************************************************************
 4.
 
@@ -175,7 +223,6 @@ should be detected.
 I have provided some string variables to test your function with.
 ******************************************************************************/
 
-
 /******************************************************************************
 5.
 
@@ -206,5 +253,5 @@ should return "whao is ohe ptino tf ohis?"
 ******************************************************************************/
 
 function doubleSwap(string, charA, charB) {
-	//your code here
+  //your code here
 }
